@@ -8,11 +8,11 @@ hero:
   tagline: 쉼터, 버팀목, 모닥불 이고 싶다...
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 블로그 소개
+      link: /about
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 개발자 소개
+      link: /about-me
 
 features:
   - icon:
@@ -28,3 +28,5 @@ features:
     details: 새로운 시작을 함께 하는 기술 파트너
     link: https://www.bud-it.com/
 ---
+
+<RecentPosts />

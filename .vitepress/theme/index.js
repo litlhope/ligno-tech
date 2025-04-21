@@ -5,16 +5,21 @@ import { useData, useRoute } from "vitepress";
 import giscusTalk from "vitepress-plugin-comment-with-giscus";
 import "./style.css";
 
+import CustomLayout from "./CustomLayout.vue";
+import RecentPosts from "./components/RecentPosts.vue";
+import "./custom.css";
+
 /** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    });
-  },
+  // Layout: () => {
+  //   return h(DefaultTheme.Layout, null, {
+  //     // https://vitepress.dev/guide/extending-default-theme#layout-slots
+  //   });
+  // },
+  Layout: CustomLayout,
   enhanceApp({ app, router, siteData }) {
-    // ...
+    app.component("RecentPosts", RecentPosts);
   },
   setup() {
     const { frontmatter } = toRefs(useData());
