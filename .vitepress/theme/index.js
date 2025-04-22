@@ -7,6 +7,7 @@ import "./style.css";
 
 import CustomLayout from "./CustomLayout.vue";
 import RecentPosts from "./components/RecentPosts.vue";
+import Partners from "./components/Partners.vue";
 import "./custom.css";
 
 /** @type {import('vitepress').Theme} */
@@ -20,6 +21,7 @@ export default {
   Layout: CustomLayout,
   enhanceApp({ app, router, siteData }) {
     app.component("RecentPosts", RecentPosts);
+    app.component("Partners", Partners);
   },
   setup() {
     const { frontmatter } = toRefs(useData());

@@ -6,15 +6,15 @@ hero:
   name: "🟢🔵之木"
   text: "Ligno 기술 블로그"
   tagline: 쉼터, 버팀목, 모닥불 이고 싶다...
-  actions:
-    - theme: brand
-      text: 블로그 소개
-      link: /about
-    - theme: alt
-      text: 개발자 소개
-      link: /about-me
+  # actions:
+  #   - theme: brand
+  #     text: 블로그 소개
+  #     link: /about
+  #   - theme: alt
+  #     text: 개발자 소개
+  #     link: /about-me
 
-features:
+partners:
   - icon:
       src: /images/grigo-ico.png
     title: 그리고™
@@ -30,3 +30,5 @@ features:
 ---
 
 <RecentPosts />
+
+<Partners />
