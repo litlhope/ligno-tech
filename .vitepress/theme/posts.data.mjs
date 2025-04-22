@@ -10,6 +10,6 @@ export default createContentLoader("/posts/**/*.md", {
       .sort(
         (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
       )
-      .slice(0, 5);
+      .slice(0, 10);
   },
 });
