@@ -19,9 +19,6 @@ import { toRefs, computed } from "vue";
 const { Layout } = DefaultTheme;
 const { frontmatter } = toRefs(useData());
 
-console.log("Frontmatter: ", frontmatter);
-console.log("Frontmatter1: ", frontmatter.value.date);
-
 const formattedDate = computed(() => {
     if (!frontmatter.value.date) return "Not Set!";
     const date = new Date(frontmatter.value.date);
