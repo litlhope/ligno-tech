@@ -29,10 +29,10 @@ export default {
 
     giscusTalk(
       {
-        repo: "litlhope/litlcity",
-        repoId: "R_kgDOJ1EBww",
+        repo: "litlhope/ligno-tech",
+        repoId: "R_kgDOOeLlOw",
         category: "Announcements",
-        categoryId: "DIC_kwDOJ1EBw84CcL9w",
+        categoryId: "DIC_kwDOOeLlO84CpXsK",
         mapping: "pathname",
         inputPosition: "bottom",
         lang: "ko",
