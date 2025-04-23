@@ -1,6 +1,7 @@
 ---
 layout: doc
 title: 개발자 소개
+type: page
 ---
 
 안녕하세요,
