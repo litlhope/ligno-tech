@@ -23,11 +23,11 @@ tags: [Teamcity, Setting, Deploy, Build, CI/CD]
 ## 작업 절차
 ### 프로젝트 등록
 먼저 프로젝트 추가를 위해 `Teamcity` 상단의 `Projects`메뉴 우측의 `+`버튼을 클릭한다.
-![Create Project 버튼](/assets/img/post/infra/teamcity/teamcity-deploy-setting/001.png)
+![Create Project 버튼](/images/post/infra/teamcity/teamcity-deploy-setting/001.png)
 
 `Create Project` 화면이 표시되면, 프로젝트 정보를 입력해 준다. 이 포스팅에서는 소스 없이 빌드/배포 설정 과정을 설명하므로,
 `Manually`를 선택 했지만, 상단 버튼 중 사용하는 저장소에 맞는 버튼을 클릭하여 소스를 연결하여 설정하도록 한다.
-![Create Project](/assets/img/post/infra/teamcity/teamcity-deploy-setting/002.png)
+![Create Project](/images/post/infra/teamcity/teamcity-deploy-setting/002.png)
 1. `Manually` 버튼을 클릭한다.
 2. 프로젝트 정보를 입력해 준다.
 3. `Create` 버튼을 클릭한다.
@@ -35,12 +35,12 @@ tags: [Teamcity, Setting, Deploy, Build, CI/CD]
 > `Manually`로 프로젝트를 등록하더라도, 추후 저장소 연결은 가능하다.
 
 `Create`버튼 클릭 후 표시되는 프로젝트 설정 화면에서 `Create build configuration` 버튼을 클릭하여 빌드 설정화면으로 진입힌다.
-![Project 설정 화면](/assets/img/post/infra/teamcity/teamcity-deploy-setting/003.png)
+![Project 설정 화면](/images/post/infra/teamcity/teamcity-deploy-setting/003.png)
 
 ### 빌드설정 등록
 빌드 설정화면이 표시되면, 설정 정보를 입력해 준다. 프로젝트 설정과 마찬가지로, 소스를 연결 할 수 있지만, 설명을 위해 `Manually`를 선택했다.
 소스를 연결 할 경우, 뒤에 설명 할 `Trigger` 설정 등이 자동 처리된다.
-![Create Build Configuration](/assets/img/post/infra/teamcity/teamcity-deploy-setting/004.png)
+![Create Build Configuration](/images/post/infra/teamcity/teamcity-deploy-setting/004.png)
 
 이후 `New VCS Root` 화면이 표시되고, 소스를 연결 할 수 있도록 해주지만, 이 포스팅에서는 `Skip`버튼을 클릭하여 스킵하였다.
 
@@ -52,16 +52,16 @@ tags: [Teamcity, Setting, Deploy, Build, CI/CD]
 이 표스팅에서는 단순히 설명을 위한 예시이므로, 상세 설정은 생락한다.
 간단히 Build/Push를 담당하는 설정에서는 `VCS Trigger`를 이용하여, 형상관리 서버의 특정 브랜치에 Push가 발생하면 실행이되고,
 배포를 담당하는 설정에서는 `Finish Build Trigger`를 이용하여, Build/Push를 담당하는 설정이 실행된 후 실행되도록 설정한다는 개념만 이해하도록 하겠다.
-![Triggers](/assets/img/post/infra/teamcity/teamcity-deploy-setting/005.png)
+![Triggers](/images/post/infra/teamcity/teamcity-deploy-setting/005.png)
 
 #### 빌드 스텝
 다음으로 `Build Steps` 메뉴를 클릭하고, `Add build step`버튼을 클릭한다.
-![Build Steps](/assets/img/post/infra/teamcity/teamcity-deploy-setting/006.png)
+![Build Steps](/images/post/infra/teamcity/teamcity-deploy-setting/006.png)
 
 이후 표시되는 `New Build Step`화면에서 미리 구성된 템플릿을 이용하여 빌드를 구성 할 수 있도록 제공해 준다.
 각 템플릿들을 연구하여 추후 개선 할 수도 있지만, 현재로서는 `Command Line` 템플릿만 이용하여 빌드 절차를 구성하였다.
 필수 절차와 샘플 스크립트를 공유하겠다. 먼저 화면에서 `Command Line`를 클릭하여 상세 설정화면으로 진입한다.
-![New Build Step](/assets/img/post/infra/teamcity/teamcity-deploy-setting/007.png)
+![New Build Step](/images/post/infra/teamcity/teamcity-deploy-setting/007.png)
 
 > 사내 프로젝트는 기본적으로 프로젝트 루트에 `.docker` 디렉토리에 `docker-compose.yml`에서 사용 할 환경 변수 파일들을 저장하고 있다.
 > 또한 Back-end 프로젝트(Spring boot)의 경우 `resources`에 `application-secret.yml` 파일을 저장하고 있다.
@@ -71,7 +71,7 @@ tags: [Teamcity, Setting, Deploy, Build, CI/CD]
 
 먼저 설정파일을 복사하는 단계를 구성한다. Agent-001 환경 변수에는 각 프로젝트에서 빌드시 필요한 리소스를 저장하고 있는 경로가 `env.buildResourceDir`
 환경 변수에 저장되어 있다. 이를 이용하여 빌드시 필요한 설정 파일들을 복사하도록 한다.
-![New Build Step:Command Line](/assets/img/post/infra/teamcity/teamcity-deploy-setting/008.png)
+![New Build Step:Command Line](/images/post/infra/teamcity/teamcity-deploy-setting/008.png)
 1. 현재 스텝에서 작업 할 내용을 요약하여 `Step name`을 입력한다.
 2. 작업 할 내용을 `Custom script`에 입력한다.
    ```shell
@@ -165,13 +165,13 @@ fi
 ```
 
 여기까지 진행하면 아래 이미지와 같이 3개 스텝을 갖는 빌드 설정이 완성된다.
-![Build Steps](/assets/img/post/infra/teamcity/teamcity-deploy-setting/009.png)
+![Build Steps](/images/post/infra/teamcity/teamcity-deploy-setting/009.png)
 
 ### Agent 할당
 이후 생성한 빌드 설정을 실행 할 Agent를 지정해 주어야 한다.
 신규 프로젝트 등록시 `Default` 그룹에는 프로젝트가 자동으로 추가되지만, 그외 그룹에는 아래 스크린샷을 참고하여 `Assign projects...`버튼을
 활용하여 프로젝트를 추가해 주어야 한다.
-![Assign projects](/assets/img/post/infra/teamcity/teamcity-deploy-setting/010.png)
+![Assign projects](/images/post/infra/teamcity/teamcity-deploy-setting/010.png)
 1. 상단 메뉴의 `Agents` 메뉴를 클릭한다.
 2. `Default` 그룹을 클릭한다.
 3. `Projects` 탭을 클릭한다.
@@ -182,7 +182,7 @@ fi
 이제 빌드 할 Agent에 위에서 작성한 빌드설정을 할당해보도록 하겠다.
 참고로 한 프로젝트의 빌드 설정을 빌드용 설정과 배포용 설정으로 구분하여 각각 담당하는 Agent를 구분하므로, 할당 방식을 `Run assigned configurations only`로 설정하여 사용하고 있다.
 (아래 스크린샷의 중간부분 2와 3 사이의 설정을 참고한다.)
-![Agent 설정](/assets/img/post/infra/teamcity/teamcity-deploy-setting/011.png)
+![Agent 설정](/images/post/infra/teamcity/teamcity-deploy-setting/011.png)
 1. 빌드 설정을 할당 할 `Agent-001` Agent를 클릭한다.
 2. `Compatible Configurations` 탭을 클릭한다.
 3. `Assign configurations` 버튼을 클릭한다.
@@ -193,7 +193,7 @@ fi
 이후 배포용 설정은 위 빌드용 설정과 유사하므로 차이점과 샘플로 사용 할 `Custom script` 내용 정도만 설명하겠다.
 먼저 설정의 `Triggers`는 위 설명을 참고하여 `Finish Build Trigger`를 설정한다. 프로젝트나 빌드설정 추가 단계에서, VCS가 연결되었다면,
 기본적으로 `VCS Trigger`가 설정되어 있으므로, 우측 `Edit` 오른펀의 버튼을 클릭하여 삭제하고, `Finish Build Trigger`만 추가하면 된다.
-![Triggers](/assets/img/post/infra/teamcity/teamcity-deploy-setting/012.png)
+![Triggers](/images/post/infra/teamcity/teamcity-deploy-setting/012.png)
 앞에서 설정한 빌드용 설정이 성공한 후에 배포용 설정이 실행되도록 설정하는 예시이다. 선행되어 실행되어야 할 설정을 선택해 주고,
 `Trigger after successful build only` 설정을 체크하면 선행 설정이 성공했을때만 실행되고, 체크하지 않으면 성공/실패와 무관하게 실행된다.
 

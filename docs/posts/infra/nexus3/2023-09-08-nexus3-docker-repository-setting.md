@@ -15,13 +15,13 @@ tags: [Nexus3, Docker, Docker Hub, Infra, Setting]
 > `docker-hosted`와 `docker-proxy` 두개의 Blob Stores를 생성한다.
 
 1. `Blob Stores` 메뉴로 이동한다.
-   ![Blob Stores 메뉴로 이동](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/001.png)
+   ![Blob Stores 메뉴로 이동](/images/post/infra/nexus3/nexus3-docker-repository-setting/001.png)
    1. 상단 톱니바퀴를 클릭하여 관리 페이지에 진입한다.
    2. 왼쪽 메뉴에서 `Repository > Blob Stores`를 클릭한다.
    3. 상단의 `Create blob store` 버튼을 클릭한다.
 
 2. `docker-hosted` 정보를 입력한다.
-   ![docker-hosted 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/002.png)
+   ![docker-hosted 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/002.png)
    1. `Type`을 `File`로 선택하면, 하단 입력 폼이 표시된다.
    2. `Name`에 `docker-hosted`를 입력한다.
       - 이때 `Path`는 자동으로 입력된다.
@@ -30,7 +30,7 @@ tags: [Nexus3, Docker, Docker Hub, Infra, Setting]
    5. 상단의 `Create blob store` 버튼을 클릭한다.
 
 3. `docker-proxy` 정보를 입력한다.
-   ![docker-proxy 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/003.png)
+   ![docker-proxy 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/003.png)
    1. `Type`을 `File`로 선택하면, 하단 입력 폼이 표시된다.
    2. `Name`에 `docker-proxy`를 입력한다.
       - 이때 `Path`는 자동으로 입력된다.
@@ -40,45 +40,45 @@ tags: [Nexus3, Docker, Docker Hub, Infra, Setting]
 > `docker-hosted`와 `docker-proxy` 두개의 Repositories를 생성한다.
 
 1. `Repositories` 메뉴로 이동한다.
-   ![Repositories 메뉴로 이동](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/004.png)
+   ![Repositories 메뉴로 이동](/images/post/infra/nexus3/nexus3-docker-repository-setting/004.png)
    1. 관리 페이지에서 `Repository > Repositories`를 클릭한다.
    2. 상단의 `Create repository` 버튼을 클릭한다.
 
 2. `Recipe`중 `docker(hosted)` 항목을 선택한다.
-   ![docker(hosted) 선택](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/005.png)
+   ![docker(hosted) 선택](/images/post/infra/nexus3/nexus3-docker-repository-setting/005.png)
 
 3. `docker-hosted` 정보를 입력한다.
-   ![docker-hosted 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/006-1.png)
+   ![docker-hosted 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/006-1.png)
    1. `Name`에 `docker-hosted`를 입력한다.
    2. `HTTP` 체크박스를 체크하고, 포트를 `5000`으로 입력한다.
    3. `Enable Docker V1 API` 체크박스를 체크한다.
-   ![docker-hosted 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/006-2.png)
+   ![docker-hosted 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/006-2.png)
    4. `Blob store`에 `docker-hosted`를 선택한다.
-   ![docker-hosted 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/006-3.png)
+   ![docker-hosted 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/006-3.png)
    5. `Create repository` 버튼을 클릭한다.
 
 4. `Recipe`중 `docker(proxy)` 항목을 선택한다.
-   ![docker(proxy) 선택](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/007.png)
+   ![docker(proxy) 선택](/images/post/infra/nexus3/nexus3-docker-repository-setting/007.png)
 
 5. `docker-proxy` 정보를 입력한다.
-   ![docker-proxy 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/008-1.png)
+   ![docker-proxy 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/008-1.png)
    1. `Name`에 `docker-proxy`를 입력한다.
    2. `Enable Docker V1 API` 체크박스를 체크한다.
-   ![docker-proxy 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/008-2.png)
+   ![docker-proxy 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/008-2.png)
    3. `Remote Storage`에 `https://registry-1.docker.io`를 입력한다.
    4. `Docker Index` 선택 항목 중 `Use Docker Hub`를 선택한다.
-   ![docker-proxy 정보 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/008-3.png)
+   ![docker-proxy 정보 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/008-3.png)
    5. `Blob store`에 `docker-proxy`를 선택한다.
    6. `Create repository` 버튼을 클릭한다.
 
 ### 3. Realms 설정
 > `docker-proxy`를 사용하기 위해서는 `Realms` 설정이 필요하다.
 
-![Realms 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/009-1.png)
+![Realms 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/009-1.png)
 1. 관리 페이지에서 `Security > Realms`를 클릭한다.
 2. Available 항목의 `Docker Bearer Token Realm`을 클릭한다.
    * 클릭시 `Docker Bearer Token Realm`이 `Active` 항목으로 이동한다.
-![Realms 설정](/assets/img/post/infra/nexus3/nexus3-docker-repository-setting/009-2.png)
+![Realms 설정](/images/post/infra/nexus3/nexus3-docker-repository-setting/009-2.png)
 3. `Save` 버튼을 클릭한다.
 
 여기까지 진행하면 `Nexus3`쪽 설정은 완료되었다.

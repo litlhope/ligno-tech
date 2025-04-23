@@ -343,7 +343,7 @@ public class ChatSocketClientPool extends SocketClientPool<ChatSocketClient> {
 
 ##### 3.2.5. 소켓 프로토콜 정의서 확인 및 구현
 > 프로토콜 정의서는 아래 이미지와 같이 작성 된 것으로 가정 하며, 이후 절차는 `사용자 관리`의 `친구 목록 조회`를 예시로 설명한다.
-> ![img.png](/assets/img/post/websocket/bud-it-websocket-dev-guide/protocol-list-example.png)
+> ![img.png](/images/post/websocket/bud-it-websocket-dev-guide/protocol-list-example.png)
 
 1. 대분류에 해당하는 하위 패키지를 추가한다.
    * 이전 추가된 `....socket.chat` 패키지 하위에 `user` 패키지를 추가한다.

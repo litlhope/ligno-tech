@@ -94,7 +94,7 @@ jacocoTestReport {
 
 1. `SonarQube` 토큰 발급
 
-![SonarQube 토큰 발급](/assets/img/post/infra/sonarqube/spring-boot-sonarqube-setting/001.png)
+![SonarQube 토큰 발급](/images/post/infra/sonarqube/spring-boot-sonarqube-setting/001.png)
    1. 화면 우측 상단의 아이콘을 클릭하여 사용 팝업 메뉴를 표시한다.
    2. 사용자 팝어 메뉴에서 `My Account` 메뉴를 클릭한다.
    3. 상단 탭 메뉴에서 `Security`를 선택한다.
