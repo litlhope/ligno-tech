@@ -6,6 +6,7 @@ description: docker-compose 설정으로 Teamcity를 설치하는 방법에 대�
 comments: true
 categories: [Infra, TeamCity]
 tags: [TeamCity, Docker, Infra, Setting]
+thumbnail: /images/post/infra/teamcity/teamcity-in-docker/thumbnail.png
 ---
 
 ## 시작하며...
