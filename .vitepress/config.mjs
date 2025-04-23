@@ -11,8 +11,8 @@ const vitePressOptions = defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "블로그 소개", link: "/about" },
-      { text: "About Me", link: "/about-me" },
+      { text: "개발자 소개", link: "/about-me" },
+      { text: "블로그 소개", link: "/posts/about" },
     ],
 
     // sidebar: [

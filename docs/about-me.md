@@ -1,9 +1,7 @@
 ---
 layout: doc
-title: About Me
+title: 개발자 소개
 ---
-
-# 👋 About Me
 
 안녕하세요,
 

@@ -20,9 +20,9 @@ const { Layout } = DefaultTheme;
 const { frontmatter } = toRefs(useData());
 
 const formattedDate = computed(() => {
-    if (!frontmatter.value.date) return "Not Set!";
+    if (!frontmatter.value.date) return "-";
     const date = new Date(frontmatter.value.date);
-    if (isNaN(date.getTime())) return "Invalid Date!";
+    if (isNaN(date.getTime())) return "E";
     return date.toLocaleDateString("ko-KR", {
         year: "numeric",
         month: "long",
