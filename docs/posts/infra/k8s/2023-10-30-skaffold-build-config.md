@@ -14,7 +14,7 @@ tags: [ Kubernetes, K8s, K3s, Skaffold, Setting ]
 `docker-compose`를 이용하여 서비스를 배포하던 것을 쿠버네티스를 이용하도록 변경을 진행하면서, 각 쿠버네티스 설정파일(`deployment`, `service` 등)이
 많아지고, 이를 수정하고 검증하는 과정에서 매번 `kubectl create`, `kubectl delete`를 반복하게 되었다.
 이를 해결 할 방법이 없을지 검토하는 과정에서 `skaffold`를 알게 되었고, 이를 활용하는 방법에 대해 스터디한 내용을 정리하고자 한다.
-이 포스팅을 읽기전에 [MacOS에서 k3s 테스트 환경 구성](/posts/k3s-macos-init/) 포스팅을 참고하여, 테스트 환경을 먼저 구축하길 추천한다.
+이 포스팅을 읽기전에 [MacOS에서 k3s 테스트 환경 구성](/posts/infra/k8s/2023-10-30-k3s-macos-init) 포스팅을 참고하여, 테스트 환경을 먼저 구축하길 추천한다.
 
 ## 이번 포스팅에서는...
 이번 포스팅에서는 MacOS에 `skaffold`를 설치하고, 기존에 작성한 스프링부트 프로젝트에, `k3s`용으로 마리아DB 설정파일과 서비스 설정파일을
@@ -103,7 +103,7 @@ MYSQL_PASSWORD=db-user-password
 각 환경변수의 설정값으 본인의 환경에 맞도록 수정해준다.
 
 아래명령을 이용하여, `env`로 작성된 환경변수값을 쿠버네티스 `Secret`에 등록 할 수 있다.
-> [MacOS에서 k3s 테스트 환경 구성](/posts/k3s-macos-init/) 포스팅을 참고하여 `k3sctl` alias를 등록했다면 아래 명령을 그대로 사용 할 수 있다. `minikube`등을 사용하여 로컬에 적용시에는 `k3sctl`명령을 `kubectl`로 변경하여 실행해야한다. 이 설명은 이후로 계속 유효하다.
+> [MacOS에서 k3s 테스트 환경 구성](/posts/infra/k8s/2023-10-30-k3s-macos-init) 포스팅을 참고하여 `k3sctl` alias를 등록했다면 아래 명령을 그대로 사용 할 수 있다. `minikube`등을 사용하여 로컬에 적용시에는 `k3sctl`명령을 `kubectl`로 변경하여 실행해야한다. 이 설명은 이후로 계속 유효하다.
 ```shell
 $ k3sctl create secret generic grigo-chat-mariadb-secret \
   --from-env-file=./k8s/.mariadb.env
@@ -309,7 +309,7 @@ manifests:
 
 여기까지 따라했다면, `skaffold`를 사용 할 준비가 완료되었다.
 아래 명령을 통해서 `build` -> `docker`이미지 생성 -> 쿠버네티스배포를 일괄 처리 할 수 있다.
-[MacOS에서 k3s 테스트 환경 구성](/posts/k3s-macos-init/)에서 설정한 `k3s` 환경에 배포가 될 수 있도록 `--kubeconfig` 옵션을 사용하였다. 로컬에 설정한 `minikube`등을 사용한다면, 옵션 없이 간단히 사용이 가능하다.
+[MacOS에서 k3s 테스트 환경 구성](/posts/infra/k8s/2023-10-30-k3s-macos-init)에서 설정한 `k3s` 환경에 배포가 될 수 있도록 `--kubeconfig` 옵션을 사용하였다. 로컬에 설정한 `minikube`등을 사용한다면, 옵션 없이 간단히 사용이 가능하다.
 ```shell
 $ skaffold dev --kubeconfig ~/.kube/k3s.yaml
 ```
