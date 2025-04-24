@@ -6,6 +6,7 @@ import { generateSidebar, withSidebar } from "vitepress-sidebar";
 const vitePressOptions = defineConfig({
   title: "之木",
   description: "기술 블로그",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   srcDir: "./docs",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
