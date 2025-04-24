@@ -6,6 +6,9 @@ hero:
   name: "🟢🔵之木"
   text: "Ligno 기술 블로그"
   tagline: 쉼터, 버팀목, 모닥불 이고 싶다...
+  image:
+    src: /icons/ligno-icon-full.png
+    alt: "Ligno Logo"
   # actions:
   #   - theme: brand
   #     text: 블로그 소개
