@@ -7,6 +7,7 @@ comments: true
 categories: [Command]
 tags: [CLI, Command, certbot]
 published: true
+thumbnail: /images/thumbs/certbot-command.png
 ---
 
 ## 시작하며...

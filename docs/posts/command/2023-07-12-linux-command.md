@@ -6,6 +6,7 @@ description: Linux를 사용하면서 자주 검색하거나, 잡다한 명령�
 comments: true
 categories: [Command]
 tags: [Command, Linux, Ubuntu, CLI]
+thumbnail: /images/thumbs/linux-command.png
 ---
 
 ## 시작하며...

@@ -6,6 +6,7 @@ description: Flutter 명령어를 정리한다.
 comments: true
 categories: [ Flutter ]
 tags: [ Flutter, Command ]
+thumbnail: /images/thumbs/flutter-command.png
 ---
 
 _Flutter 종속성 설정 추가(라이브러리 설치)_

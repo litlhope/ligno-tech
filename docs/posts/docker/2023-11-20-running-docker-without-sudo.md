@@ -6,6 +6,7 @@ description: Ubuntu에서 sudo 없이 docker 명령 사용하도록 설정하는
 comments: true
 categories: [Docker]
 tags: [Docker, Setting, Ubuntu, Ubuntu 22.04]
+thumbnail: /images/thumbs/running-docker-without-sudo.png
 ---
 
 ## 시작하며...

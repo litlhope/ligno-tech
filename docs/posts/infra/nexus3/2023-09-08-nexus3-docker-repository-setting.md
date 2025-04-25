@@ -6,6 +6,7 @@ description: 사내 Nexus3에서 도커 저장소를 생성하는 방법에 대�
 comments: true
 categories: [Infra, Nexus3]
 tags: [Nexus3, Docker, Docker Hub, Infra, Setting]
+thumbnail: /images/thumbs/nexus3-docker-repository-setting.png
 ---
 
 ## Nexus3에 사내 도커 저장소 생성

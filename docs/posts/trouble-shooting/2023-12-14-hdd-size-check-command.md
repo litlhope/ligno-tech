@@ -6,6 +6,7 @@ description: Docker pull push build가 전반적으로 이상하게 작동하는
 comments: true
 categories: [Trouble Shooting]
 tags: [Trouble Shooting, Docker, HDD, df, du]
+thumbnail: /images/thumbs/hdd-size-check-command.png
 ---
 
 ## 시작하며...

@@ -6,6 +6,7 @@ description: certbot 웹 루트 명령어 사용 방법에 대해서 정리 한�
 comments: true
 categories: [Command]
 tags: [CLI, Command, certbot]
+thumbnail: /images/thumbs/certbot-command-webroot.png
 ---
 
 ## 시작하며...

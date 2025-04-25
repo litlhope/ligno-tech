@@ -6,6 +6,7 @@ description: 사내 웹 소켓 개발시 개발 가이드를 정리 한다.
 comments: true
 categories: [WebSocket]
 tags: [WebSocket, Develop Guide, Code Convention, Spring Boot]
+thumbnail: /images/thumbs/bud-it-websocket-dev-guide.png
 ---
 
 # 목표

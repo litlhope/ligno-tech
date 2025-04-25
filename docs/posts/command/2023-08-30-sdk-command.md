@@ -6,6 +6,7 @@ description: sdkman의 sdk 명령 설치 및 사용 방법에 대해 정리 한�
 comments: true
 categories: [ Command ]
 tags: [ CLI, Command, sdk, sdkman ]
+thumbnail: /images/thumbs/sdk-command.png
 ---
 
 ## 시작하며...

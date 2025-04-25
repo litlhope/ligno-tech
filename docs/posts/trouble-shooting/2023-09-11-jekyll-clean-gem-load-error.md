@@ -6,6 +6,7 @@ description: jekyll clean 시 발생하는 오류에 대한 조치
 comments: true
 categories: [Trouble Shooting]
 tags: [Trouble Shooting, Jekyll, Blog, Ruby]
+thumbnail: /images/thumbs/jekyll-clean-gem-load-error.png
 ---
 
 ## 상황 설명.

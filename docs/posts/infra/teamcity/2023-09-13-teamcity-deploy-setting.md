@@ -6,6 +6,7 @@ description: Teamcity에서 배포 설정에 대한 예시를 작성한다.
 comments: true
 categories: [Infra, Teamcity]
 tags: [Teamcity, Setting, Deploy, Build, CI/CD]
+thumbnail: /images/thumbs/teamcity-deploy-setting.png
 ---
 
 > `Teamcity`에서 배포 설정 진행 내용을 바탕으로 현재 구성된 내용을 정리한다.

@@ -6,6 +6,7 @@ description: AWS EC2 인스턴스 시작 후 초기 작업 명령을 정리 한�
 comments: true
 categories: [ Infra, AWS ]
 tags: [ AWS, EC2, Setup, Command ]
+thumbnail: /images/thumbs/ec2-init-after-instance-start.png
 ---
 
 ## EC2 인스턴스 시작 후 초기화 작업

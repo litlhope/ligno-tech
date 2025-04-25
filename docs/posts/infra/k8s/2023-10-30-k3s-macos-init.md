@@ -6,6 +6,7 @@ description: MacOS에서 k3s 테스트 환경 구성 방법을 기술한다.
 comments: true
 categories: [ Infra, Kubernetes ]
 tags: [ Kubernetes, K8s, K3s, Setting ]
+thumbnail: /images/thumbs/k3s-macos-init.png
 ---
 
 ## 시작하며...

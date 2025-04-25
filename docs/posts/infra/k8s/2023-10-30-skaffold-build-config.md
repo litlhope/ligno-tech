@@ -6,6 +6,7 @@ description: skaffold 설치 및 이를 활용한 쿠버네티스 배포 자동�
 comments: true
 categories: [ Infra, Kubernetes ]
 tags: [ Kubernetes, K8s, K3s, Skaffold, Setting ]
+thumbnail: /images/thumbs/skaffold-build-config.png
 ---
 
 > 아래 내용은 사내 서비스 중 `grigo-chat`에 적용 과정을 정리한 내용으로 좀 더 보편적인  예제로 수정을 진행할 예정입니다.

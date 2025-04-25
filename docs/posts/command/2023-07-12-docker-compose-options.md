@@ -6,6 +6,7 @@ description: docker-compose를 사용하면서 알게 된 옵션들을 정리한
 comments: true
 categories: [Command]
 tags: [Command, docker-compose]
+thumbnail: /images/thumbs/docker-compose-options.png
 ---
 
 ## 시작하며...

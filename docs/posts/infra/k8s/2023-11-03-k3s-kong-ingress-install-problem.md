@@ -6,6 +6,7 @@ description: K3S에 Kong Ingress 설치 방법 및 설치중 발생한 문제에
 comments: true
 categories: [ Infra, Kubernetes ]
 tags: [ Kubernetes, K8s, K3s, Kong Ingress, Trouble Shooting, Setting ]
+thumbnail: /images/thumbs/k3s-kong-ingress-install-problem.png
 ---
 
 ## 시작하며...

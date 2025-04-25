@@ -6,6 +6,7 @@ description: vim 설정 파일인 .vimrc에 대해서 정리 한다.
 comments: true
 categories: [Command]
 tags: [CLI, Command, vim, Setting]
+thumbnail: /images/thumbs/vimrc-configuration.png
 ---
 
 개인적으로 사용하고 있는 `.vimrc` 설정 파일의 내용을 정리한다.

@@ -6,6 +6,7 @@ description: nginx 서버에 대용량 파일 업로드 설정 방법을 기술�
 comments: true
 categories: [ Infra, Nginx ]
 tags: [ Nginx, Setting ]
+thumbnail: /images/thumbs/nginx-large-file-support.png
 ---
 
 ## 상황

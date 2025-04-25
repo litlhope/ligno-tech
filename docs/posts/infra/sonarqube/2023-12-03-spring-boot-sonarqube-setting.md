@@ -6,6 +6,7 @@ description: Spring boot에 jacoco 커버리지 도구와, sonarqube 설정을 �
 comments: true
 categories: [Infra, SonarQube]
 tags: [Infra, Jacoco, SonarQube, Spring boot, Setting]
+thumbnail: /images/thumbs/spring-boot-sonarqube-setting.png
 ---
 
 ## 시작하며...
