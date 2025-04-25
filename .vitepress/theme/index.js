@@ -6,6 +6,7 @@ import giscusTalk from "vitepress-plugin-comment-with-giscus";
 import "./style.css";
 
 import CustomLayout from "./CustomLayout.vue";
+import PostsLayout from "./components/PostsLayout.vue";
 import RecentPosts from "./components/RecentPosts.vue";
 import Partners from "./components/Partners.vue";
 import "./custom.css";
@@ -22,6 +23,7 @@ export default {
   enhanceApp({ app, router, siteData }) {
     app.component("RecentPosts", RecentPosts);
     app.component("Partners", Partners);
+    app.component("PostsLayout", PostsLayout);
   },
   setup() {
     const { frontmatter } = toRefs(useData());
