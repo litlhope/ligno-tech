@@ -13,7 +13,7 @@ const vitePressOptions = defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "개발자 소개", link: "/about-me" },
-      { text: "블로그 소개", link: "/posts/about" },
+      { text: "블로그 소개", link: "/about" },
     ],
 
     // sidebar: [
@@ -37,6 +37,7 @@ const vitePressSidebarOptions = {
   documentRootPath: "/docs",
   // basePath: "/posts",
   useTitleFromFrontmatter: true,
+  useFolderLinkFromIndexFile: true,
   useFolderTitleFromIndexFile: true,
   collapsed: true,
 };

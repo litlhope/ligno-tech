@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="recent-more">
-        <a href="/posts/about" class="more-link">모든 글 보기 →</a>
+        <a href="/posts/" class="more-link">모든 글 보기 →</a>
     </div>
 </template>
 

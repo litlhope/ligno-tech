@@ -8,38 +8,15 @@ categories: [WebSocket]
 tags: [WebSocket, Develop Guide, Code Convention, Spring Boot]
 ---
 
-## 목차
-[개발 가이드](#개발-가이드)
-* [1. 개발 환경](#1-개발-환경)
-* [2. 프로토콜](#2-프로토콜)
-   * [2.1. 클라이언트 -> 서버 프로토콜](#21-클라이언트---서버-프로토콜)
-   * [2.2 서버 -> 클라이언트 프로토콜 and 브로드 캐스팅 프로토콜](#22-서버---클라이언트-프로토콜-and-브로드-캐스팅-프로토콜)
-   * [2.3. 커맨드 작성 규칙](#23-커맨드-작성-규칙)
-* [3. 개발 가이드](#3-개발-가이드)
-   * [3.1. 서버](#31-서버)
-      * [3.1.1. 주요 클래스](#311-주요-클래스)
-      * [3.1.2 주요 공용 메서드](#312-주요-공용-메서드)
-   * [3.2 서버 서비스 구현 절차 - 채팅 서비스 예시](#32-서버-서비스-구현-절차---채팅-서비스-예시)
-      * [3.2.1. 서비스용 패키지 추가](#321-서비스용-패키지-추가)
-      * [3.2.2. EndPoint 클래스 작성](#322-endpoint-클래스-작성)
-      * [3.2.3. `SocketClient` 클래스 작성](#323-socketclient-클래스-작성)
-      * [3.2.4. `SocketClientPool` 클래스 작성](#324-socketclientpool-클래스-작성)
-      * [3.2.5. 소켓 프로토콜 정의서 확인 및 구현](#325-소켓-프로토콜-정의서-확인-및-구현)
-   * [3.3 클라이언트](#33-클라이언트)
-      * [3.3.1. 필요 라이브러리 설치](#331-필요-라이브러리-설치)
-      * [3.3.2. `WebSocket` 관리를 위한 `recoil` 상태 추가](#332-websocket-관리를-위한-recoil-상태-추가)
-      * [3.3.3. 서비스 진입점 작성 및 `WebSocket` 연결 처리](#333-서비스-진입점-작성-및-websocket-연결-처리)
-      * [3.3.4. 서비스 화면 개발 예시](#334-서비스-화면-개발-예시)
-
-## 목표
+# 목표
 1. 여러 소켓 URL을 갖는 서비스를 개발하기 위한 구조를 잡는다.
 2. 서비스별로 소켓 메시지를 처리하는 클래스를 작성하여 분리 할 수 있도록 한다.
 3. 클라이언트는 자신의 화면(또는 컴포넌트)에서 사용 할 소켓 커맨드에만 집중 할 수 있도록 한다.
 
-## 용어 설명
+# 용어 설명
 
-## 개발 가이드
-### 1. 개발 환경
+# 개발 가이드
+## 1. 개발 환경
 * Java 17
 * Spring Boot 3.1.2
 * Gradle 8.2.1
@@ -60,10 +37,10 @@ tags: [WebSocket, Develop Guide, Code Convention, Spring Boot]
    ```
    * `org.springframework.boot:spring-boot-starter-websocket` : WebSocket 지원
 
-### 2. 프로토콜
+## 2. 프로토콜
 > 통신은 기본적으로 JSON을 이용하여 데이터를 주고 받는다.
 
-#### 2.1. 클라이언트 -> 서버 프로토콜
+### 2.1. 클라이언트 -> 서버 프로토콜
 > 커맨드와 데이터를 `::`로 구분하고, 커맨드는 일반 문자열(영문 대문자 스네이크 케이스)을 사용하고,
 > 데이터는 JSON 형식으로 전달한다.
 
@@ -72,7 +49,7 @@ tags: [WebSocket, Develop Guide, Code Convention, Spring Boot]
 CS_GET_ROOM::{"roomId": 1}
 ```
 
-#### 2.2 서버 -> 클라이언트 프로토콜 and 브로드 캐스팅 프로토콜
+### 2.2 서버 -> 클라이언트 프로토콜 and 브로드 캐스팅 프로토콜
 > 서버에서 클라이언트로 전달하는 프로토콜은 JSON 형식으로 전달한다.
 
 *예시*
@@ -89,7 +66,7 @@ CS_GET_ROOM::{"roomId": 1}
 4. `data`
    * 클라이언트 요청 커맨드에 대한 응답 데이터이다.
 
-#### 2.3. 커맨드 작성 규칙
+### 2.3. 커맨드 작성 규칙
 1. 커맨드는 영문 대문자 스네이크 케이스를 사용한다.
 2. 커맨드는 prefix로 `CS_`, `SC_`, `BC_`를 사용한다.
    * `CS_` : 클라이언트 -> 서버
@@ -108,9 +85,9 @@ CS_GET_ROOM::{"roomId": 1}
    * `SC_RES_GET_ROOM` : 클라이언트의 `GET_ROOM` 명령 요청에 대해 룸 정보를 응답 한다.
    * `BC_ROOM` : 신규 작성 또는 수정된 룸 정보를 브로드 캐스팅 한다.
 
-### 3. 개발 가이드
-#### 3.1. 서버
-##### 3.1.1. 주요 클래스
+## 3. 개발 가이드
+### 3.1. 서버
+#### 3.1.1. 주요 클래스
 > 프로젝트 루트 패키지에 `socket` 패키지를 생성하여 관련 클래스를 작성한다.
 > 이후 각 서비스별로 패키지를 추가(아래 예시에서는 `chat`)하여 관련 클래스를 상속/구현하여 사용한다.
 
@@ -171,7 +148,7 @@ CS_GET_ROOM::{"roomId": 1}
 5. `SocketService.java`
    * 각 소켓 서비스의 하위 서비스에서 소켓 메시지를 처리 하는 클래스에서 상속 받아 사용하는 클래스이다.
 
-##### 3.1.2 주요 공용 메서드
+#### 3.1.2 주요 공용 메서드
 1. `abstract SocketClientPool.java`
    1. 멤버 메서드
       > 아래 설명에서 `T`는 `T extends SocketClient`로 선언 됨.
@@ -207,13 +184,13 @@ CS_GET_ROOM::{"roomId": 1}
    2. 추상 메서드
       > 없음
 
-#### 3.2 서버 서비스 구현 절차 - 채팅 서비스 예시
-##### 3.2.1. 서비스용 패키지 추가
+### 3.2 서버 서비스 구현 절차 - 채팅 서비스 예시
+#### 3.2.1. 서비스용 패키지 추가
 > `socket` 패키지 하위에 서비스용 패키지를 추가한다.
 
 1. `socket` 패키지 하위에 서비스용 `chat` 패키지를 추가한다.
 
-##### 3.2.2. EndPoint 클래스 작성
+#### 3.2.2. EndPoint 클래스 작성
 > `SocketController`를 suffix로 사용한다.
 >
 > *MVC 패턴 개발 절차와 비슷하게 할 생각이었으나, `EndPoint` suffix를 사용하는것이 좀 더 명확 할 것 같기도 하다. 어떤 방향이 좋을지에 대해 논의해 보자.*
@@ -276,7 +253,7 @@ public class ChatSocketController {
    ```
    * `EndPoint`의 각 `@OnOpen`, `@OnMessage`, `@OnClose` 메소드에서 각 메소드와 매치되는 Listener의 메소도를 호출하도록 구성한다.
 
-##### 3.2.3. `SocketClient` 클래스 작성
+#### 3.2.3. `SocketClient` 클래스 작성
 > `SocketClient` 클래스를 상속받아 각 서비스별로 필요한 Properties를 추가하여 구현한다.
 > 채팅서비스에서는 클라이언트의 `사용자ID`와 사용자가 현재 참여하고 있는 채팅방의 `roomId`를 추가하여 구성하였다.
 
@@ -297,7 +274,7 @@ public class ChatSocketClient extends SocketClient {
 * `userId`는 불변이므로 `final`로 구성하였다.
 * `roomId`는 사용자가 채팅방에 참여하면서 변경될 수 있으므로 `setter`를 추가하였다.
 
-##### 3.2.4. `SocketClientPool` 클래스 작성
+#### 3.2.4. `SocketClientPool` 클래스 작성
 > `SocketClientPool` 클래스를 상속받아 위 [3.2.3. SocketClient 클래스 작성](#323-socketclient-클래스-작성)에서 작성한
 > `ChatSocketClient`를 관리하도록 구현한다.
 >
@@ -341,7 +318,7 @@ public class ChatSocketClientPool extends SocketClientPool<ChatSocketClient> {
    * `setJoinRoom` : 입력 받은 `userId`를 갖는 소켓 클라이언트의 `roomId`를 입력 받은 `roomId`로 변경하는 메소드
    * `getRoomUserClientIdList` : 입력 받은 `roomId`를 갖는 소켓 클라이언트의 `uuid`를 리스트로 반환하는 메소드
 
-##### 3.2.5. 소켓 프로토콜 정의서 확인 및 구현
+#### 3.2.5. 소켓 프로토콜 정의서 확인 및 구현
 > 프로토콜 정의서는 아래 이미지와 같이 작성 된 것으로 가정 하며, 이후 절차는 `사용자 관리`의 `친구 목록 조회`를 예시로 설명한다.
 > ![img.png](/images/post/websocket/bud-it-websocket-dev-guide/protocol-list-example.png)
 
@@ -517,11 +494,11 @@ public class ChatSocketClientPool extends SocketClientPool<ChatSocketClient> {
       * `SocketService`에 구현되어 있는 `broadcastAll` 또는 `broadcast` 메소드를 호출 하도록 구현 한다.
       *  추가한 `broadcastXxxx` 메소드는 `handleXxxx` 메소드에서 호출하도록 구성한다.
 
-#### 3.3. 클라이언트
+### 3.3. 클라이언트
 > 클라이언트 구현은 `NextJS`에서 구현하는 것을 예시로 설명한다.
 > `NextJS` 프로젝트 생성은 완료 한 것으로 간주 한다.
 
-##### 3.3.1. 필요 라이브러리 설치
+#### 3.3.1. 필요 라이브러리 설치
 > `recoil`을 사용하도록 구성 하였다. `recoil` 라이브러리를 설치한다.
 ```shell
 $ npm install recoil
@@ -546,7 +523,7 @@ $ npm install recoil
    * 참고: `tsx` 확장자는 `typescript xml`의 약자로, `React`에서 `XML`(`HTML`) 구문이 포함되는 파일에 사용한다. 위 `_app.tsx` 처럼
    `return` 구문에서 `html` 형태의 컴포넌트를 반환하도록 구현되는 경우 `tsx` 확장자를 사용하고, 로직으로 구성된 모듈의 경우 `ts` 확장자를 사용한다.
 
-##### 3.3.2. `WebSocket` 관리를 위한 `recoil` 상태 추가
+#### 3.3.2. `WebSocket` 관리를 위한 `recoil` 상태 추가
 *src/atoms/web-socket.ts*
 ```typescript
 import {atom} from "recoil";
@@ -588,7 +565,7 @@ const WebSocketClientInfoState = atom<WebSocketClientInfoType>({
 export {WebSocketState, WebSocketMsgHistoryState, WebSocketClientInfoState};
 ```
 
-##### 3.3.3. 서비스 진입점 작성 및 `WebSocket` 연결 처리
+#### 3.3.3. 서비스 진입점 작성 및 `WebSocket` 연결 처리
 *src/pages/chat/index.tsx*
 ```typescript
 import {useRecoilState} from "recoil";
@@ -707,7 +684,7 @@ export default ChatHome;
             * 예시에서 실제 채팅 서비스의 초기 화면은 친구 목록 화면(`/chat/friends')이 된다.
       * 현재 수신한 메시지를 `recoil`의 `WebSocketMsgHistoryState`에 추가하여, 다른 화면에서도 사용 할 수 있도록 조치 한다.
 
-##### 3.3.4. 서비스 화면 개발 예시
+#### 3.3.4. 서비스 화면 개발 예시
 > `ChatHome`에서 `Router.push('/chat/friends')`를 호출하여 이동한 친구 목록 화면을 예시로 하여, 각 화면단 개발 방법에 대해 알아본다.
 
 *src/pages/chat/friends.tsx*
