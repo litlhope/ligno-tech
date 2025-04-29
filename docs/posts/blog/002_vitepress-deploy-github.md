@@ -6,6 +6,7 @@ description: VitePress로 제작한 기술 블로그를 GitHub Actions를 활용
 comments: true
 categories: [Blog]
 tags: [CLI, Command, VitePress, Setting]
+thumbnail: /images/thumbs/vitepress-deploy-github.png
 ---
 
 ## 🛫 시작하며
