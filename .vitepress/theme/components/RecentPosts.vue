@@ -18,7 +18,7 @@
 import PostCard from "./PostCard.vue";
 import { data as posts } from "../posts.data.mjs";
 
-const recentPosts = posts.slice(0, 8);
+const recentPosts = posts.slice(0, 6);
 </script>
 
 <style scoped>
