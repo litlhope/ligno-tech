@@ -53,6 +53,9 @@ const formattedDate = computed(() => {
 
 .post-meta h1 {
     margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.4;
+    word-break: keep-all; /* 한글 줄바꿈 자연스럽게 */
 }
 
 .description {

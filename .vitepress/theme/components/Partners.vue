@@ -1,7 +1,7 @@
 <template>
     <section class="partners-section">
         <h2 class="partners-title">제휴 사이트</h2>
-        <div class="partners-grid">
+        <div class="partners-grid" :style="gridColumnStyle">
             <a
                 v-for="partner in partners"
                 :key="partner.title"
@@ -25,10 +25,19 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { useData } from "vitepress";
 
 const { frontmatter } = useData();
 const partners = frontmatter.value.partners || [];
+
+const gridColumnStyle = computed(() => {
+    const count = partners.length;
+    const columns = count >= 3 ? 3 : count === 2 ? 2 : 1;
+    return {
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    };
+});
 </script>
 
 <style>
@@ -59,10 +68,23 @@ const partners = frontmatter.value.partners || [];
 }
 
 .partners-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 1.2rem;
     justify-content: center;
+}
+
+/* 태블릿 이하에서는 2개 */
+@media (max-width: 1024px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* 모바일에서는 1개 */
+@media (max-width: 640px) {
+    .partners-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 a.partner-card {
@@ -74,7 +96,6 @@ a.partner-card {
     border-radius: 12px;
     width: 100%;
     max-width: 540px;
-    flex: 1 1 40%;
     transition:
         background-color 0.2s ease,
         transform 0.2s ease;
@@ -114,5 +135,16 @@ a.partner-card .partner-details {
     color: var(--vp-c-text-2);
     line-height: 1.5;
     text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .partners-grid {
+        flex-direction: column;
+    }
+
+    a.partner-card {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
 }
 </style>
